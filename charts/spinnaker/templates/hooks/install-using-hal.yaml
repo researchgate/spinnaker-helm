@@ -100,6 +100,10 @@ spec:
       containers:
       - name: halyard-install
         image: {{ .Values.halyard.image.repository }}:{{ .Values.halyard.image.tag }}
+        {{- if .Values.halyard.env }}
+        env:
+        {{ toYaml .Values.halyard.env | indent 8 }}
+        {{- end }}
         volumeMounts:
         - name: halyard-config
           mountPath: /opt/halyard/scripts
