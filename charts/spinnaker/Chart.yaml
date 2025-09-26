@@ -21,3 +21,14 @@ maintainers:
   name: saitejaopsmx
 - name: abhinaybyrisetty
   email: abhinay.byrisetty@hotmail.com
+dependencies:
+  - name: redis
+    version: 16.13.1
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+  - name: minio
+    version: 8.0.9
+    condition: minio.enabled
+  - name: openldap
+    version: 1.2.3
+    condition: openldap.enabled
