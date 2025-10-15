@@ -132,7 +132,7 @@ spec:
         {{- end }}
         {{- if .Values.halyard.env }}
         env:
-{{ toYaml .Values.halyard.env | indent 8 }}
+        {{- toYaml .Values.halyard.env | nindent 8 }}
         {{- end }}
       {{- if .Values.halyard.gitops.enabled }}
       {{- if or (eq .Values.halyard.gitops.repo.type "git") (eq .Values.halyard.gitops.repo.type "s3") }}
@@ -248,7 +248,7 @@ spec:
       - name: halyard
         {{- if .Values.halyard.env }}
         env:
-        {{ toYaml .Values.halyard.env | indent 8 }}
+        {{- toYaml .Values.halyard.env | nindent 8 }}
         {{- end }}
         image: {{ .Values.halyard.image.repository }}:{{ .Values.halyard.image.tag }}
         {{- if .Values.halyard.gitops.enabled }}
