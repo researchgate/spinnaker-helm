@@ -255,7 +255,12 @@ spec:
         {{- toYaml .Values.halyard.envFrom | nindent 8 }}
         {{- end }}
         image: {{ .Values.halyard.image.repository }}:{{ .Values.halyard.image.tag }}
-        {{- if .Values.halyard.gitops.enabled }}
+        {{- if .Values.halyard.postStartCommand }}
+        lifecycle:
+          postStart:
+            exec:
+              command: {{ toYaml .Values.halyard.postStartCommand | nindent  14 }}
+        {{- else if .Values.halyard.gitops.enabled }}
         lifecycle:
           postStart:
             exec:
