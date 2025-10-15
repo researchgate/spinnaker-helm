@@ -17,7 +17,6 @@ halyardconfigUpdate:
     tag: hal
 
 halyard:
-  env: {}
   gitops:
     enabled: false
     secretName: opsmx-gitops-auth

@@ -104,6 +104,10 @@ spec:
         env:
         {{- toYaml .Values.halyard.env | nindent 8 }}
         {{- end }}
+        {{- if .Values.halyard.envFrom }}
+        envFrom:
+        {{- toYaml .Values.halyard.envFrom | nindent 8 }}
+        {{- end }}
         volumeMounts:
         - name: halyard-config
           mountPath: /opt/halyard/scripts
